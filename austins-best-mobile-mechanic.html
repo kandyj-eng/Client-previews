@@ -20,7 +20,8 @@
     --font-head: 'Montserrat', sans-serif;
     --font-body: 'Inter', sans-serif;
   }
-  body { font-family: var(--font-body); background: var(--bg-white); color: var(--text-main); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  html, body { overflow-x: hidden; width: 100%; }
+  body { font-family: var(--font-body); background: var(--bg-white); color: var(--text-main); -webkit-font-smoothing: antialiased; }
 
   a[href^="tel"], a[href^="http"] { color: inherit; text-decoration: none; transition: opacity 0.2s; }
   a:hover { opacity: 0.8; }
@@ -34,10 +35,11 @@
   .promo-banner { background: var(--text-main); color: #FFF; text-align: center; padding: 12px 20px; font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; position: relative; z-index: 101; }
   .promo-banner span { color: var(--accent); font-weight: 800; }
 
+  /* DESKTOP NAVIGATION */
   nav {
     background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid #E2E8F0;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5%; height: 80px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    padding: 0 5%; height: 80px; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px);
   }
   .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-main); cursor: pointer;}
   .nav-logo img { height: 48px; width: auto; border-radius: 6px; }
@@ -51,9 +53,19 @@
   .nav-cta { background: var(--text-main); color: #FFF; font-family: var(--font-body); font-weight: 700; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; border: none; padding: 12px 28px; cursor: pointer; border-radius: 50px; transition: all 0.3s;}
   .nav-cta:hover { background: var(--accent); color: #0F172A; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(81, 208, 222, 0.4); }
 
+  /* MOBILE BOTTOM APP BAR (Hidden on Desktop) */
+  .mobile-bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #FFF; border-top: 1px solid #E2E8F0; z-index: 999; padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -4px 20px rgba(0,0,0,0.05); }
+  .mobile-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 0; color: #94A3B8; text-decoration: none; cursor: pointer; transition: color 0.2s;}
+  .mobile-nav-item svg { width: 22px; height: 22px; margin-bottom: 4px; }
+  .mobile-nav-item span { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;}
+  .mobile-nav-item.active { color: var(--text-main); }
+  .mobile-nav-item.active svg { color: var(--accent-hover); }
+
+  /* Page Logic */
   .page { display: none; opacity: 0; transition: opacity 0.4s ease; }
   .page.active { display: block; opacity: 1; }
 
+  /* SPLIT HERO SECTION */
   .hero { 
     padding: 6rem 5% 6rem; 
     display: grid;
@@ -111,6 +123,8 @@
 
   /* SERVICES PAGE */
   .services-page-hero { background: var(--bg-alt); border-bottom: 1px solid #E2E8F0; padding: 6rem 5% 5rem; text-align: center; }
+  
+  /* Flexible Services Grid for Mobile */
   .services-big-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3.5rem; text-align: left;}
   
   .service-big-card { background: var(--bg-white); padding: 3rem 2.5rem; border-radius: var(--radius); transition: all 0.3s; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); border: 1px solid rgba(0,0,0,0.02); position: relative; }
@@ -191,13 +205,13 @@
   .map-container { margin-top: 5rem; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
   /* FOOTER */
-  footer { background: var(--bg-alt); padding: 5rem 5% 3rem; text-align: center; color: var(--text-gray); border-top: 1px solid #E2E8F0;}
+  footer { background: var(--bg-alt); padding: 5rem 5% 5rem; text-align: center; color: var(--text-gray); border-top: 1px solid #E2E8F0;}
   .footer-logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 1.5rem; cursor: pointer;}
   .footer-logo img { height: 40px; width: auto; border-radius: 4px;}
   .footer-logo-text { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--text-main); text-transform: uppercase; text-align: left; line-height: 1.1;}
   .footer-logo-text span { color: var(--accent-hover); display: block; font-size: 12px; letter-spacing: 2px;}
   
-  .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin: 3rem 0; border-top: 1px solid #E2E8F0; padding-top: 3rem; }
+  .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin: 2rem 0; border-top: 1px solid #E2E8F0; padding-top: 3rem; }
   .footer-nav a { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: #94A3B8; text-decoration: none; transition: color 0.2s; cursor: pointer;}
   .footer-nav a:hover { color: var(--text-main); }
   
@@ -206,29 +220,34 @@
   .social-icon:hover { color: var(--accent-hover); transform: translateY(-2px); }
 
   /* ========================================= */
-  /* FULL RESPONSIVE MOBILE FIX                */
+  /* BULLETPROOF MOBILE RESPONSIVENESS         */
   /* ========================================= */
   @media (max-width: 900px) {
+    /* Enable Bottom App Bar */
+    .mobile-bottom-nav { display: flex; }
+    body { padding-bottom: 70px; } /* Prevent footer from hiding behind nav */
+
     nav { background: #FFFFFF; } 
     .nav-links { display: none; } 
     
+    /* Hero Section Constraints */
     .hero { grid-template-columns: 1fr; padding: 3rem 5% 4rem; text-align: center; gap: 2.5rem;}
     .hero h1 { font-size: clamp(36px, 8vw, 48px); }
     .hero-sub { margin-bottom: 2rem; font-size: 16px;}
     .hero-btns { justify-content: center; }
     
-    .capabilities-bento { grid-template-columns: repeat(2, 1fr); }
-    .focus-bento { grid-template-columns: repeat(2, 1fr); }
+    /* Remove Strict Min-Widths for Grid */
+    .capabilities-bento { grid-template-columns: 1fr 1fr; }
+    .focus-bento { grid-template-columns: 1fr 1fr; }
     .bento-feat-img.span-2 { grid-column: span 2; aspect-ratio: 16/9; }
     
-    .services-big-grid { grid-template-columns: 1fr; }
-
     .trust-strip { flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem 5%; }
     
     .section { padding: 4rem 5%; }
     .section-title { font-size: 32px; }
     .bento-card { padding: 2rem 1.5rem; }
     
+    /* Fix About Layout */
     .about-container { grid-template-columns: 1fr; gap: 3rem;}
     .about-bottom-bar { flex-direction: column; align-items: stretch; text-align: center; gap: 1.5rem; padding-top: 3rem;}
     .about-bottom-bar button { width: 100%; }
@@ -238,18 +257,21 @@
     .press-title { margin-bottom: 3rem; }
     .press-grid { flex-direction: column; gap: 1.5rem; }
     
+    /* Form Constraints */
     .contact-wrapper { grid-template-columns: 1fr; gap: 0; }
-    .contact-info { padding: 3rem 2rem; }
-    .form-container { padding: 3rem 2rem; }
+    .contact-info { padding: 3rem 1.5rem; }
+    .form-container { padding: 3rem 1.5rem; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
   }
 
   @media (max-width: 600px) {
+    /* Extreme Mobile Cleanup */
     .nav-cta { display: none; } /* Prevents header from forcing wide scroll on tiny screens */
     .nav-logo-text { font-size: 18px; }
-    .capabilities-bento { grid-template-columns: 1fr; }
-    .focus-bento { grid-template-columns: 1fr; }
-    .bento-feat-img.span-2 { grid-column: span 1; aspect-ratio: 4/3; }
+    
+    /* Override all grids to single column */
+    .capabilities-bento, .focus-bento, .services-big-grid { grid-template-columns: 1fr !important; }
+    .bento-feat-img.span-2 { grid-column: span 1 !important; aspect-ratio: 4/3; }
   }
 </style>
 </head>
@@ -272,6 +294,25 @@
   </div>
   <button class="nav-cta" onclick="showPage('contact')">Schedule Service</button>
 </nav>
+
+<div class="mobile-bottom-nav">
+  <a onclick="showPage('home')" class="mobile-nav-item active" id="mob-nav-home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    <span>Home</span>
+  </a>
+  <a onclick="showPage('services')" class="mobile-nav-item" id="mob-nav-services">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+    <span>Services</span>
+  </a>
+  <a onclick="showPage('about')" class="mobile-nav-item" id="mob-nav-about">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    <span>Roberto</span>
+  </a>
+  <a onclick="showPage('contact')" class="mobile-nav-item" id="mob-nav-contact">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    <span>Book</span>
+  </a>
+</div>
 
 <div class="page active" id="page-home">
   <section class="hero">
@@ -661,16 +702,28 @@
 
 <script>
   function showPage(name) {
-    document.querySelectorAll('.page').forEach(p => {
-      p.classList.remove('active');
-    });
+    // Hide all pages and remove active class from desktop nav
+    document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); });
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
     
+    // Remove active class from mobile nav
+    document.querySelectorAll('.mobile-nav-item').forEach(a => a.classList.remove('active'));
+    
     setTimeout(() => {
+      // Show the selected page
       document.getElementById('page-' + name).classList.add('active');
-      document.getElementById('nav-' + name).classList.add('active');
+      
+      // Update desktop nav
+      const desktopLink = document.getElementById('nav-' + name);
+      if(desktopLink) desktopLink.classList.add('active');
+      
+      // Update mobile nav
+      const mobileLink = document.getElementById('mob-nav-' + name);
+      if(mobileLink) mobileLink.classList.add('active');
+      
       window.scrollTo({ top: 0, behavior: 'smooth' });
       
+      // Re-trigger scroll animations
       document.querySelectorAll('.fade-in-up').forEach(el => el.classList.remove('in-view'));
       setTimeout(() => checkAnimations(), 50);
     }, 10);
