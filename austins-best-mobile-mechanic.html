@@ -197,7 +197,7 @@
   .footer-logo-text { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--text-main); text-transform: uppercase; text-align: left; line-height: 1.1;}
   .footer-logo-text span { color: var(--accent-hover); display: block; font-size: 12px; letter-spacing: 2px;}
   
-  .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin: 2rem 0; border-top: 1px solid #E2E8F0; padding-top: 3rem; }
+  .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin: 3rem 0; border-top: 1px solid #E2E8F0; padding-top: 3rem; }
   .footer-nav a { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: #94A3B8; text-decoration: none; transition: color 0.2s; cursor: pointer;}
   .footer-nav a:hover { color: var(--text-main); }
   
@@ -212,15 +212,17 @@
     nav { background: #FFFFFF; } 
     .nav-links { display: none; } 
     
-    .capabilities-bento { grid-template-columns: repeat(2, 1fr); }
-    .focus-bento { grid-template-columns: repeat(2, 1fr); }
-    .bento-feat-img.span-2 { grid-column: span 2; aspect-ratio: 16/9; }
-
-    .hero { padding: 3rem 5% 4rem; text-align: center; gap: 2rem;}
+    .hero { grid-template-columns: 1fr; padding: 3rem 5% 4rem; text-align: center; gap: 2.5rem;}
     .hero h1 { font-size: clamp(36px, 8vw, 48px); }
     .hero-sub { margin-bottom: 2rem; font-size: 16px;}
     .hero-btns { justify-content: center; }
     
+    .capabilities-bento { grid-template-columns: repeat(2, 1fr); }
+    .focus-bento { grid-template-columns: repeat(2, 1fr); }
+    .bento-feat-img.span-2 { grid-column: span 2; aspect-ratio: 16/9; }
+    
+    .services-big-grid { grid-template-columns: 1fr; }
+
     .trust-strip { flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem 5%; }
     
     .section { padding: 4rem 5%; }
@@ -231,7 +233,7 @@
     .about-bottom-bar { flex-direction: column; align-items: stretch; text-align: center; gap: 1.5rem; padding-top: 3rem;}
     .about-bottom-bar button { width: 100%; }
     .trust-badges { flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; width: 100%;}
-    .badge-card { width: 100%; flex-direction: column; text-align: center; }
+    .badge-card { width: 100%; min-width: 0; flex-direction: column; text-align: center; }
     
     .press-title { margin-bottom: 3rem; }
     .press-grid { flex-direction: column; gap: 1.5rem; }
@@ -243,6 +245,8 @@
   }
 
   @media (max-width: 600px) {
+    .nav-cta { display: none; } /* Prevents header from forcing wide scroll on tiny screens */
+    .nav-logo-text { font-size: 18px; }
     .capabilities-bento { grid-template-columns: 1fr; }
     .focus-bento { grid-template-columns: 1fr; }
     .bento-feat-img.span-2 { grid-column: span 1; aspect-ratio: 4/3; }
