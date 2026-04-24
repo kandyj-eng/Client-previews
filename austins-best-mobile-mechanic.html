@@ -10,7 +10,6 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    /* TRUE CYAN & GREYSCALE VARIABLES - ALL TRACES OF BLUE REMOVED */
     --brand-cyan: #00E5FF; 
     --brand-cyan-hover: #00B8D4;
     --bg-white: #FFFFFF; 
@@ -257,7 +256,7 @@
   .split-badge-num span { color: var(--text-main); font-weight: 300; font-size: 1.4rem; }
   .split-badge-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-gray); margin-top: 6px; }
 
-  /* ─── NEW: ABOUT PAGE STYLING ─── */
+  /* ─── ABOUT PAGE STYLING ─── */
   .text-center { text-align: center; }
   .text-left { text-align: left; }
   .about-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 4rem; }
@@ -351,7 +350,6 @@
     .owner-img { max-width: 400px; margin: 0 auto; }
     .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
     
-    /* New Responsive Overrides for the About Page */
     .about-container { grid-template-columns: 1fr; }
     .about-bottom-bar { flex-direction: column; justify-content: center; text-align: center; }
     .trust-badges { flex-direction: column; gap: 1.5rem; align-items: center; }
@@ -616,6 +614,21 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="section-inner">
+      <div class="split-layout">
+        <div class="split-img-wrap fade-in-up delay-1">
+          <img src="https://retrovioletstudios.github.io/client-previews/garagediagnostic.jpeg" alt="Mechanic diagnosing a vehicle in a home garage">
+        </div>
+        <div class="split-text fade-in-up delay-2">
+          <p class="section-eyebrow left-aligned">Premium Standards</p>
+          <h2 class="section-title">OEM Parts &<br><em>Fluids</em></h2>
+          <p>We never cut corners. All of our mobile repairs utilize manufacturer-approved parts and premium synthetic fluids to ensure your vehicle runs exactly as it was engineered to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" style="background: var(--bg-alt); border-top: 1px solid #E0E0E0;">
     <div class="section-inner fade-in-up" style="text-align: center;">
       <div class="section-header">
@@ -713,6 +726,21 @@
         </div>
         <div>
           <button class="btn-outline" onclick="showPage('services')" style="padding: 18px 36px; height: 100%;">Explore Our Capabilities</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-alt); border-top: 1px solid #E0E0E0;">
+    <div class="section-inner">
+      <div class="split-layout">
+        <div class="split-text fade-in-up delay-1">
+          <p class="section-eyebrow left-aligned">Fully Equipped</p>
+          <h2 class="section-title">The Mobile<br><em>Service Bay</em></h2>
+          <p>Our fleet is outfitted with the same state-of-the-art diagnostic computers, heavy-duty jacks, and precision tools you would find at a high-end dealership. We literally bring the entire auto shop right to your driveway.</p>
+        </div>
+        <div class="split-img-wrap fade-in-up delay-2">
+          <img src="https://retrovioletstudios.github.io/client-previews/mobilekeys.jpg" alt="Mechanic handing off keys to a customer in an apartment parking lot">
         </div>
       </div>
     </div>
@@ -836,7 +864,6 @@
       
       window.scrollTo({ top: 0, behavior: 'smooth' });
       
-      // Reset classes immediately so they re-trigger on scroll
       document.querySelectorAll('.fade-in-up, .reveal').forEach(el => el.classList.remove('in-view', 'visible'));
       setTimeout(checkAnimations, 50);
     }, 10);
@@ -860,7 +887,6 @@
     });
   }
   
-  // Bulletproof Failsafe: Ensures content ALWAYS becomes visible even if JS scroll tracker fails or bugs out
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.querySelectorAll('.fade-in-up, .reveal').forEach(el => {
@@ -869,7 +895,6 @@
     }, 1500);
   });
 
-  // Run immediately for first load elements
   setTimeout(checkAnimations, 50);
   
   document.addEventListener('DOMContentLoaded', () => {
